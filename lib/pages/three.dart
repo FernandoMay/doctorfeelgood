@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class ThreeW extends StatelessWidget {
   @override
@@ -49,14 +50,25 @@ class ThreeW extends StatelessWidget {
               child: Center(
                 child: Text(
                   'Temporada V',
-                  style: TextStyle(fontSize: 20,color: Colors.teal,fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.teal,
+                      fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            CardiB(
-              title: 'Dominico',
-              price: '17.90',
-            ),
+            GestureDetector(
+                child: CardiB(
+                  title: 'Dominico',
+                  price: '17.90',
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.downToUp,
+                          child: DetailScreen()));
+                }),
             CardiB(
               title: 'Dominico',
               price: '17.90',
@@ -166,6 +178,122 @@ class CardiB extends StatelessWidget {
           ),
           Divider(),
         ],
+      ),
+    );
+  }
+}
+
+class DetailScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        child: SingleChildScrollView(
+          child: Stack(
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Container(
+                    height: 700,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(60),
+                      ),
+                      color: Colors.cyan,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: <Widget>[
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              Text(
+                                '\$ ',
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                              Text(
+                                '17.90',
+                                style: TextStyle(
+                                    fontSize: 36,
+                                    color: Colors.white,
+                                    fontStyle: FontStyle.italic),
+                              ),
+                              Text(
+                                ' Kg',
+                                style: TextStyle(
+                                    fontSize: 24, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Text(
+                            'Dominico',
+                            style: TextStyle(fontSize: 48, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Container(
+                        height: 80,
+                        padding: EdgeInsets.all(8),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.favorite_border,
+                            color: Colors.cyan,
+                            size: 48,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                      Container(
+                        height: 80,
+                        padding: EdgeInsets.all(8),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.shopping_cart,
+                            color: Colors.cyan,
+                            size: 48,
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SafeArea(
+
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                        size: 36,
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
