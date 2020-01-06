@@ -6,6 +6,7 @@ class OneW extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.cyan,
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -34,7 +35,8 @@ class CardiG extends StatelessWidget {
         border: Border.all(
           color: Colors.cyan,
         ),
-        borderRadius: BorderRadius.circular(8)
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.white,
       ),
       margin: EdgeInsets.all(8),
       // height: 240,

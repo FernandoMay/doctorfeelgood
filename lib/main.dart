@@ -54,23 +54,25 @@ class _MenuState extends State<Menu> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,size: 24,),
-            title: Text(''),
+            icon: Icon(Icons.home,size: 32,),
+            title: Text('Home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite,size: 24,),
-            title: Text(''),
+            icon: Icon(Icons.favorite,size: 32,),
+            title: Text('Favs'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,size: 24,),
-            title: Text(''),
+            icon: Icon(Icons.person,size: 32,),
+            title: Text('Me'),
 
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal,
-        unselectedItemColor: Colors.cyan,
+        unselectedItemColor: Colors.white,
         onTap: _onItemTapped,
+        backgroundColor: dominico,
+
       ),
     );
   }
